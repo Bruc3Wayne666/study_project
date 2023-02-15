@@ -10,6 +10,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
 
     return {
         mode,
+        cache: !isDev,
         entry: paths.entry,
         output: {
             filename: '[name].[contenthash].js',
@@ -22,6 +23,6 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         },
         resolve: buildResolvers(options),
         devtool: isDev ? 'inline-source-map' : undefined,
-        devServer: isDev ? buildDevServer(options) : undefined
+        devServer: isDev ? buildDevServer(options) : undefined,
     }
 }
